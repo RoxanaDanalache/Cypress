@@ -1,0 +1,44 @@
+config:
+  target: "https://api.ipstack.com"   
+  phases:
+    - duration: 60                   
+      arrivalRate: 5                 
+  variables:
+    access_key: "12c7f958b05f098f7110517fcc6c0a05"   
+  payload:
+    path: "data.csv"                 
+    fields: ["continent_name", "country_code"] 
+  metrics:
+      response_time:
+        p95:                        
+          max: 500
+      error_rate:
+        max: 1                     
+      http_errors:
+        max: 5                     
+    
+scenarios:
+  - flow:
+      - get:
+          url: "{{ target }}get"
+          capture:
+            - json: "$.ip" 
+              as: "captured_ip"         
+      - post:
+          url: "{{ target }}post"    
+          json:
+            continent_name: "{{continent_name}}"
+            country_code: "{{country_code}}"
+          expect:
+            - statusCode: 200      
+            - contentType: application/json
+  
+
+
+
+
+
+
+
+
+
