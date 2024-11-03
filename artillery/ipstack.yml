@@ -1,7 +1,7 @@
 config:
   target: "https://api.ipstack.com"   
   phases:
-    - duration: 60                   
+    - duration: 50                   
       arrivalRate: 5                 
   variables:
     access_key: "12c7f958b05f098f7110517fcc6c0a05"   
