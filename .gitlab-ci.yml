@@ -4,11 +4,8 @@ stages:
   - install
   - test
 
-
 before_script:
   - npm ci
-
-
 
 install_dependencies:
   stage: install
@@ -18,7 +15,6 @@ install_dependencies:
    paths:
     - node_modules/
    expires_in: 1 week
-
 
 cypress_tests:
   stage: test
