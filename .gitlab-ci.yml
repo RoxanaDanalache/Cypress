@@ -19,7 +19,7 @@ install_dependencies:
 cypress_tests:
   stage: test
   image: cypress/base
-  scripts:
+  script:
    - npx cypress run
   artifacts:
    expire_in: 1 week
