@@ -1,0 +1,29 @@
+image: node:16
+
+stages:
+  - install
+  - test
+
+
+before_script:
+  - npm ci
+
+
+
+install_dependencies:
+  stage: install
+  script: 
+   - npm install
+  artifacts:
+   paths:
+    - node_modules/
+   expires_in: 1 week
+
+
+cypress_tests:
+  stage: test
+  image: cypress/base
+  scripts:
+   - npx cypress run
+  artifacts:
+   expire_in: 1 week
