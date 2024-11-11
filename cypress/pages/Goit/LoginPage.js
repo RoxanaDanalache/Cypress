@@ -12,9 +12,13 @@ class LoginPage {
         cy.get("#user_password").type(password);
     }
     
-    verifySubmitButton() {
+    verifyLoginButton() {
+        cy.get("button[type='submit']").should("be.visible");
+    } 
+    
+    clickOnLoginButton() {
         cy.get("button[type='submit']").click();
-    }  
+    }
 }
 
 export default LoginPage;
